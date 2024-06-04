@@ -1,7 +1,7 @@
 @extends('crud-template')
 
 @section('content')
-<div class="card">
+<div class="Cadastrar Produtos">
     <div class="card-header">
        <h2>Cadastro de alunos</h2> 
     </div>
