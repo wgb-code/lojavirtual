@@ -1,32 +1,46 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+@extends('crud-template')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+@section('content')
+<div class="card">
+    <div class="card-header">
+       <h2>Cadastro de alunos</h2> 
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col">
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <strong>Problemas com seus dados:</strong>
+                        <br>
+                        @foreach($errors->all() as $error)
+                            <li> {{ $error }}</li>
+                        @endforeach
+                    </div>
+                @endif
+            </div>
+        </div>
 
-<body>
-    <form action="{{ url('products/new') }}" method="POST">
-        @csrf
-        <label>Nome:</label><br>
-        <input name="name" type="text" /><br>
-        <label>Descrição:</label><br>
-        <input name="description" type="textarea" /><br>
-        <label>Quantidade:</label><br>
-        <input name="quantity" type="number" /><br>
-        <label>Preço:</label><br>
-        <input name="price" type="number" /><br>
-        <label>Tipo:</label><br>
-        <input name="type_id" type="number" /><br>
-        <input type="submit" value="Salvar" />
-    </form>
+        <div class="row">
+            <form action="{{ url('alunos/novo') }}" method="POST">
+                @csrf
+                <div class="row">
+                    <strong>Nome:</strong>
+                    <input placeholder="Digite o nome" class="form-control mb-3" name="nome" type="text" />
+                    <strong>Idade:</strong>
+                    <input placeholder="Digite a idade" class="form-control mb-3" name="idade" type="number" />
+                    <strong>Email:</strong>
+                    <input placeholder="Digite o email" class="form-control mb-3" name="email" type="text" />
 
-    <button>
-        <a href=" {{ url('/products')}}">Visualizar Itens</a>
-    </button>
+                    <div class="col">
+                        <a class="btn btn-secondary" href="{{ url('/alunos') }}">Voltar</a>
+                    </div>
+                    <div class="col">
+                        <button class="btn btn-primary" type="submit">Salvar</button>
+                    </div>
 
-</body>
-
-</html>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@endsection

@@ -6,6 +6,8 @@
     <title>Document</title>
 </head>
 <body>
-    :D
+    Bem vindo.
+    <a href="{{url('login')}}">Login</a>
+    <a href="{{url('register')}}">Cadastrar-se</a>
 </body>
 </html>
