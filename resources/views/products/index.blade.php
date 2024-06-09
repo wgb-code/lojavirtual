@@ -44,6 +44,7 @@
             </table>
         </div>
     </div>
+    <a href="{{ url('dashboard') }}">Voltar</a>
     <script src="https://kit.fontawesome.com/c77b23d563.js" crossorigin="anonymous"></script>
 </body>
 </html>

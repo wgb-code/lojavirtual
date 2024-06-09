@@ -3,13 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Type; // Adicione este import
 use Illuminate\Http\Request;
 
 class ProductsController extends Controller
 {
     public function create()
     {
-        return view('products.create');
+        $types = Type::all();
+        return view('products.create', compact('types'));
     }
 
     public function store(Request $request)
@@ -18,7 +20,8 @@ class ProductsController extends Controller
             'name'        => 'required|min:2|max:30',
             'description' => 'max:200',
             'price'       => 'required|numeric|gt:0',
-            'quantity'    => 'required|numeric'
+            'quantity'    => 'required|numeric',
+            'type_id'     => 'required|exists:types,id' // Validação adicional para type_id
         ]);
 
         Product::create([
@@ -40,18 +43,16 @@ class ProductsController extends Controller
 
     public function edit($id)
     {
-        //find é o método que faz select * from products where id= ?
         $product = Product::find($id);
+        $types = Type::all(); // Pegue os tipos aqui também, se necessário para a edição
 
-        //retornamos a view passando a TUPLA de produto consultado
-        return view('products.edit', ['product' => $product]);
+        return view('products.edit', ['product' => $product, 'types' => $types]);
     }
 
     public function update(Request $request)
     {
         $product = Product::find($request->id);
 
-        //método update faz um update product set name = ? etc...
         $product->update([
             'name' => $request->name,
             'description' => $request->description,
@@ -65,9 +66,7 @@ class ProductsController extends Controller
 
     public function destroy($id)
     {
-        //select * from product where id = ?
         $product = Product::find($id);
-        //deleta o produto no banco
         $product->delete();
         return redirect('/products')->with('success', 'Produto excluído com sucesso!');
     }
