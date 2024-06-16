@@ -13,7 +13,14 @@ export default {
         extend: {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+                montserrat: ['Monsterrat', 'sans-serif'],
             },
+            colors: {
+                'blueDark': '#252B42',
+                'grayDark': '#737373',
+                'blueLight': '#23A6F0',
+                'purpleDark': '#2A7CC7',
+            }
         },
     },
 
