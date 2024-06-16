@@ -14,14 +14,16 @@
 
     <header class="w-screen px-9 hidden bg-blueDark lg:flex justify-between text-center py-3 text-xs select-none">
 
-        <div class="phone-contact flex gap-3 text-white">
-            <i class="fi fi-rr-phone-call flex items-center"></i>
-            <p class="font-semibold">(43) 3125-5517</p>
-        </div>
+        <div class="primeiros-contatos flex gap-5">
+            <div class="phone-contact flex gap-3 text-white">
+                <i class="fi fi-rr-phone-call flex items-center"></i>
+                <p class="font-semibold">(43) 3125-5517</p>
+            </div>
 
-        <div class="mail-contact flex gap-3 text-white">
-            <i class="fi fi-rr-envelope flex items-center"></i>
-            <p class="font-semibold">admin@lojavirtual.com</p>
+            <div class="mail-contact flex gap-3 text-white">
+                <i class="fi fi-rr-envelope flex items-center"></i>
+                <p class="font-semibold">admin@lojavirtual.com</p>
+            </div>
         </div>
 
         <h2 class="text-blueLight tracking-wide font-semibold">80% de desconto na primeira compra</h2>
@@ -31,7 +33,6 @@
             <i class="fi fi-brands-instagram flex items-center"></i>
             <i class="fi fi-brands-youtube flex items-center"></i>
             <i class="fi fi-brands-facebook flex items-center"></i>
-
         </div>
     </header>
 
