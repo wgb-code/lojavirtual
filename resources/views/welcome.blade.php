@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
@@ -7,12 +7,12 @@
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.4.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.4.0/uicons-brands/css/uicons-brands.css'>
     @vite('resources/css/app.css')
-    <title>Loja Virtual</title>
+    <title>Will Store</title>
 </head>
 
-<body class="w-screen h-screen font-dmSans">
+<body class="min-w-screen min-h-screen font-dmSans">
 
-    <header class="w-screen px-9 hidden bg-blueDark lg:flex justify-between text-center py-3 text-xs select-none">
+    <header class="min-w-screen px-9 hidden bg-blueDark lg:flex justify-between text-center py-3 text-xs select-none">
 
         <div class="primeiros-contatos flex gap-5">
             <div class="phone-contact flex gap-3 text-white">
@@ -50,8 +50,11 @@
                         <details>
                             <summary><i class="fi fi-rr-apps flex items-center"></i>Categorias</summary>
                             <ul class="p-2">
-                                <li><a>Submenu 1</a></li>
-                                <li><a>Submenu 2</a></li>
+                                @foreach($types as $type)
+                                <li>
+                                    <a>{{ $type->name }}</a>
+                                </li>
+                                @endforeach
                             </ul>
                         </details>
                     </li>
@@ -95,8 +98,11 @@
                     <details>
                         <summary><i class="fi fi-rr-apps flex items-center"></i>Categorias</summary>
                         <ul class="p-2">
-                            <li><a>Submenu 1</a></li>
-                            <li><a>Submenu 2</a></li>
+                            @foreach($types as $type)
+                            <li>
+                                <a>{{ $type->name }}</a>
+                            </li>
+                            @endforeach
                         </ul>
                     </details>
                 </li>
@@ -120,7 +126,7 @@
     </nav>
 
     <section class="max-w-screen mx-5 bg-blueExtraLight select-none flex lg:flex-row flex-col items-center lg:items-start justify-center lg:justify-start rounded-md">
-        <div class="content-text font-poppins px-8 py-20 lg:px-32 lg:py-40 text-center lg:text-left">
+        <div class="content-text font-poppins px-8 py-20 lg:px-32 lg:py-40 text-center lg:text-left max-w-full">
             <p class="text-purpleDark text-md font-bold leading-6 tracking-wider">#Development 2024</p>
             <h3 class="font-dmSans mt-8 text-black font-bold text-6xl md:leading-10">NOVOS PRODUTOS</h3>
             <p class="mt-8 text-grayDark text-xl leading-8">Talk is cheap, show me the code.</p>
@@ -129,8 +135,47 @@
             </button>
         </div>
         <div class="lg:block hidden">
-            <img src="{{ asset('storage/uploads/welcome-photo.webp') }}" alt="Welcome Photo">
+            <img src="{{ asset('storage/uploads/welcome-photo.webp') }}" alt="Foto inicial da página, ruiva com suas mãos segurando o cabelo.">
         </div>
+    </section>
+
+    <section class="max-w-screen mx-5 my-20 font-dmSans">
+        <div class="produtos-destaques text-center">
+            <h2 class="text-blueDark text-2xl font-bold leading-8">PRODUTOS RECENTES</h2>
+            <p class="mt-3 text-grayDark tracking-wide">Abaixo os 10 produtos mais recentes.</p>
+        </div>
+
+        <div class="mt-14 grid grid-cols-2 md:grid-cols-4 gap-10">
+            @foreach($products->take(8) as $product)
+            <article class="flex flex-col items-center mb-6 md:mb-10">
+                <div class="font-poppins select-none">
+                    <div class="p-5 bg-blueLight rounded">
+                        <img src="{{ asset('storage/uploads/no-image.webp') }}" class="w-40 h-40" alt="Imagem default quando não tiver imagem cadastrada.">
+                    </div>
+                    <h3 class="mt-6 text-left text-base text-blueLight font-dmSans font-bold leading-6">
+                        {{$product->name}}
+                    </h3>
+                    <h5 class="text-left text-sm text-grayDark font-medium leading-6">
+                        #{{$product->type->name}}
+                    </h5>
+                    <p class="my-2 md:my-4 text-left text-sm text-grayDark">
+                        {{$product->description}}
+                    </p>
+
+                    <div class="mt-2 flex justify-between w-full">
+                        <p class="p-2 rounded bg-blueLight flex items-center text-white font-medium">
+                            R${{$product->price}}
+                        </p>
+                        <p class="p-2 text-center border-2 border-blueLight rounded-md font-medium text-blueLight">
+                            {{$product->quantity}}
+                        </p>
+                    </div>
+                </div>
+            </article>
+            @endforeach
+        </div>
+
+
     </section>
 
 
