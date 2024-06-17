@@ -10,8 +10,8 @@ class TypesController extends Controller
     public function create()
     {
         $type = Type::all();
-        return view('types.create', compact('types'));
-    }
+        return view('types.create', compact('type'));
+    }    
 
     public function store(Request $request)
     {
