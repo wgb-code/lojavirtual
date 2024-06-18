@@ -39,10 +39,10 @@
     <nav class="navbar bg-base-100 px-5">
         <div class="navbar-start">
             <div class="dropdown">
-                <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+                <div tabindex="0" role="button" class="btn btn-ghost lg:hidden dark:text-zinc-200">
                     <i class="fi fi-rr-bars-staggered flex items-center"></i>
                 </div>
-                <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+                <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 dark:text-zinc-200">
                     <li>
                         <a><i class="fi fi-rr-home flex items-center"></i>Home</a>
                     </li>
@@ -87,10 +87,10 @@
                     </li>
                 </ul>
             </div>
-            <h2 class="btn btn-ghost text-xl text-blueDark">Will Store</h2>
+            <h2 class="btn btn-ghost text-xl text-blueDark dark:text-zinc-200">Will Store</h2>
         </div>
         <div class="navbar-end hidden lg:flex">
-            <ul class="menu menu-horizontal px-1 text-grayDark">
+            <ul class="menu menu-horizontal px-1 text-grayDark dark:text-zinc-200">
                 <li>
                     <a><i class="fi fi-rr-home flex items-center"></i>Home</a>
                 </li>
@@ -130,7 +130,7 @@
             <p class="text-purpleDark text-md font-bold leading-6 tracking-wider">#Development 2024</p>
             <h3 class="font-dmSans mt-8 text-black font-bold text-6xl md:leading-10">NOVOS PRODUTOS</h3>
             <p class="mt-8 text-grayDark text-xl leading-8">Talk is cheap, show me the code.</p>
-            <button class="mt-8 px-10 py-4 bg-blueLight text-white text-xl font-bold rounded transition-transform transform hover:scale-105 hover:bg-blue-600 hover:shadow-lg hover:text-white">
+            <button class="mt-8 px-10 py-4 bg-blueLight text-zinc-200 text-xl font-bold rounded transition-transform transform hover:scale-105 hover:bg-blue-600 hover:shadow-lg hover:text-zinc-200">
                 VER AGORA
             </button>
         </div>
@@ -141,8 +141,8 @@
 
     <section class="max-w-screen mx-5 my-20 font-dmSans">
         <div class="produtos-destaques text-center">
-            <h2 class="text-blueDark text-2xl font-bold leading-8">PRODUTOS RECENTES</h2>
-            <p class="mt-3 text-grayDark tracking-wide">Abaixo os 10 produtos mais recentes.</p>
+            <h2 class="text-blueDark text-2xl font-bold leading-8 dark:text-zinc-200">PRODUTOS RECENTES</h2>
+            <p class="mt-3 text-grayDark tracking-wide dark:text-zinc-400">Abaixo os 10 produtos mais recentes.</p>
         </div>
 
         <div class="mt-14 grid grid-cols-2 md:grid-cols-4 gap-10">
@@ -155,15 +155,15 @@
                     <h3 class="mt-6 text-left text-base text-blueLight font-dmSans font-bold leading-6">
                         {{$product->name}}
                     </h3>
-                    <h5 class="text-left text-sm text-grayDark font-medium leading-6">
+                    <h5 class="text-left text-sm text-grayDark font-medium leading-6 dark:text-zinc-400">
                         #{{$product->type->name}}
                     </h5>
-                    <p class="my-2 md:my-4 text-left text-sm text-grayDark">
+                    <p class="my-2 md:my-4 text-left text-sm text-grayDark dark:text-zinc-400">
                         {{$product->description}}
                     </p>
 
                     <div class="mt-2 flex justify-between w-full">
-                        <p class="p-2 rounded bg-blueLight flex items-center text-white font-medium">
+                        <p class="p-2 rounded bg-blueLight flex items-center text-white font-medium dark:text-black">
                             R${{$product->price}}
                         </p>
                         <p class="p-2 text-center border-2 border-blueLight rounded-md font-medium text-blueLight">
@@ -174,13 +174,8 @@
             </article>
             @endforeach
         </div>
-
-
+        
     </section>
-
-
-
-
 
 </body>
 
