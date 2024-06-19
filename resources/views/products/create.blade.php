@@ -9,45 +9,72 @@
             </a>
         </div>
     </x-slot>
-    <div class="card-body flex place-content-center p-4">
-        <form class="w-2/3" action="{{ url('products/new') }}" method="POST">
-            @csrf
-            <div>
-                <label for="name">{{ __('Name') }}:</label>
-                <input id="name" class="w-full block" type="text" name="name" required />
+    <form action="{{ url('products/new') }}" method="POST" class="flex flex-col justify-center items-center mx-20 mt-5 cursor-pointer">
+        @csrf
+        <div class="flex flex-col w-1/2 font-dmSans">
+            <div class="flex flex-col mt-5">
+                <label for="name" class="mb-2 text-gray-800 font-medium">Produto</label>
+
+                <input name="name" id="name" type="text" placeholder="Nome do produto" class="px-3 py-2 rounded border-gray-400 active:border-violet-700 focus:outline-none focus:ring focus:ring-violet-300" required>
+
                 <x-input-error :messages="$errors->get('name')" class="mt-2" />
             </div>
-            <div>
-                <label for="description">{{ __('Description') }}:</label>
-                <input id="description" class="w-full block" type="text" name="description" required />
-                <x-input-error :messages="$errors->get('description')" class="mt-2" />
+
+            <div class="flex flex-col mt-5">
+                <label for="description" class="mb-2 text-gray-800 font-medium">Descrição</label>
+
+                <div class="relative">
+                    <textarea name="description" id="description" class="block w-full rounded border border-gray-400 focus:outline-none focus:ring focus:ring-violet-300 resize-none" placeholder="Descrição do produto"></textarea>
+
+                    <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                        <i class="fi fi-rr-attribution-pencil"></i>
+                    </div>
+                </div>
             </div>
-            <div>
-                <label for="quantity">{{ __('Quantity') }}:</label>
-                <input id="quantity" class="w-full block" type="text" name="quantity" required />
-                <x-input-error :messages="$errors->get('quantity')" class="mt-2" />
+
+            <div class="grid grid-flow-col gap-4 mt-5">
+                <div class="flex flex-col">
+                    <label for="quantity" class="mb-2 text-gray-800 font-medium">Quantidade</label>
+
+                    <div class="relative">
+                        <input name="quantity" id="quantity" type="number" class="block w-full px-3 py-2 rounded border border-gray-400 focus:outline-none focus:ring focus:ring-violet-300 appearance-none" placeholder="Quantidade">
+
+                        <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                            <i class="fi fi-rr-sort-amount-up"></i>
+                        </div>
+                    </div>
+                    <x-input-error :messages="$errors->get('quantity')" class="mt-2" />
+                </div>
+
+                <div class="flex flex-col">
+                    <label for="price" class="mb-2 text-gray-800 font-medium">Preço</label>
+
+                    <div class="relative">
+                        <input name="price" id="price" type="number" class="block w-full px-3 py-2 rounded border-gray-400 focus:outline-none focus:ring focus:ring-violet-300 appearance-none custom-number-input" placeholder="Valor">
+
+                        <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                            <i class="fi fi-rr-badge-dollar"></i>
+                        </div>
+                    </div>
+
+                    <x-input-error :messages="$errors->get('price')" class="mt-2" />
+                </div>
             </div>
-            <div>
-                <label for="price">{{ __('Price') }}:</label>
-                <input id="price" class="w-full block" type="text" name="price" required />
-                <x-input-error :messages="$errors->get('price')" class="mt-2" />
-            </div>
-            <div>
-                <label for="type_id">{{__('Type')}}</label>
-                <select id="type_id" class="w-full block" name="type_id">
+
+            <div class="flex flex-col mt-5">
+                <label for="type_id" class="mb-2 text-gray-800 font-medium">Categoria</label>
+
+                <select id="type_id" name="type_id" class="select select-info w-full rounded border-gray-400">
                     @foreach ($types as $type)
                     <option value="{{$type['id']}}">{{$type['name']}}</option>
                     @endforeach
                 </select>
             </div>
-            <div class="flex  w-full justify-between mt-4">
-                <div class="">
-                    <button href="{{ url('/products') }}">Voltar</button>
-                </div>
-                <div>
-                    <button type="submit">Salvar</button>
-                </div>
-            </div>
-        </form>
-    </div>
+
+            <button type="submit" class="flex items-center justify-center mt-10 border-2 rounded-lg px-3 py-2 gap-2 font-semibold bg-blue-700 text-zinc-200 hover:bg-sky-700 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300 cursor-pointer">
+                Salvar
+                <i class="fi fi-rr-badge-check flex items-center"></i>
+            </button>
+        </div>
+    </form>
 </x-app-layout>
