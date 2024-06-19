@@ -9,27 +9,27 @@ class TypesController extends Controller
 {
     public function create()
     {
-        $type = Type::all();
-        return view('types.create', compact('type'));
-    }    
+        $types = Type::all();
+        return view('types.create', compact('types'));
+    }
 
     public function store(Request $request)
     {
         $request->validate([
-            'name'        => 'required|min:2|max:30',
+            'name' => 'required|min:2|max:30',
         ]);
 
         Type::create([
-            'name'        => $request->name,
+            'name' => $request->name,
         ]);
-        
+
         return redirect('/types');
     }
 
     public function index()
     {
         return view('types.index', [
-            'type' => Type::all()
+            'types' => Type::all()
         ]);
     }
 
@@ -37,12 +37,20 @@ class TypesController extends Controller
     {
         $type = Type::find($id);
 
-        return view('type.edit', ['type' => $type]);
+        return view('types.edit', ['type' => $type]);
     }
 
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
-        $type = Type::find($request->id);
+        $request->validate([
+            'name' => 'required|min:2|max:30',
+        ]);
+
+        $type = Type::find($id);
+
+        if (!$type) {
+            return redirect('/types')->with('error', 'Categoria não encontrada.');
+        }
 
         $type->update([
             'name' => $request->name,
@@ -57,5 +65,4 @@ class TypesController extends Controller
         $type->delete();
         return redirect('/types')->with('success', 'Categoria excluída com sucesso.');
     }
-
 }

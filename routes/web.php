@@ -32,7 +32,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/types/new', [TypesController::class, 'create']);
     Route::post('/types/new', [TypesController::class, 'store']);
     Route::get('/types/update/{id}', [TypesController::class, 'edit']);
-    Route::post('/types/update/', [TypesController::class, 'update']);
+    Route::put('/types/update/{id}', [TypesController::class, 'update']);
     Route::get('/types/delete/{id}', [TypesController::class, 'destroy']);
     
     Route::get('/', [WelcomeController::class, 'index']);
